@@ -10,7 +10,7 @@ import SwiftUI
 struct UserSearchView: View {
     @Environment(\.dismiss) private var dismiss
     
-    @StateObject var usersLookupViewModel: UsersLookupViewModel
+    @StateObject var usersLookupViewModel = UsersLookupViewModel()
     
     @State var keyword = ""
     @State var editMode = EditMode.active

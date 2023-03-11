@@ -11,7 +11,7 @@ import Alamofire
 struct CurrencySearchView: View {
     @Environment(\.dismiss) private var dismiss
     
-    @StateObject var currencySearchViewModel: CurrencySearchViewModel
+    @StateObject var currencySearchViewModel = CurrencySearchViewModel()
     @Binding var selectedCurrency: String?
     @State var editMode = EditMode.active
     
