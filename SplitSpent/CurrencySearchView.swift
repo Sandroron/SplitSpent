@@ -17,29 +17,15 @@ struct CurrencySearchView: View {
     
     var body: some View {
         VStack() {
-            HStack {
-                Text("Currencies")
-                    .font(.system(size: 30))
-                    .bold()
-                
+            List(currencySearchViewModel.queryResultCurrency.sorted(by: <), id: \.key, selection: $selectedCurrency) { key, value in
+                Text(key)
             }
-            List(currencySearchViewModel.queryResultCurrency.sorted(by: >), id: \.key, selection: $selectedCurrency) { key, value in
-                Text("\(key) \(String(format: "%.2f", value))")
-            }
-//            .toolbar {
-//                EditButton()
-//                    .hidden()
-//            }
-//            .environment(\.editMode, $editMode)
-            
         }.onAppear() {
             currencySearchViewModel.fetchCurrency()
         }
+        .onChange(of: selectedCurrency, perform: { selectedCurrency in
+            dismiss.callAsFunction()
+        })
+        .navigationTitle("Choose currency")
     }
 }
-
-//struct CurrencySearchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CurrencySearchView()
-//    }
-//}

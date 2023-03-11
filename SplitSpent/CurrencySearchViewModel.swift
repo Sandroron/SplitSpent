@@ -8,10 +8,13 @@
 import Foundation
 
 class CurrencySearchViewModel: ObservableObject {
+    
+    let requestUrl = "https://api.exchangerate.host/latest"
+    
     @Published var queryResultCurrency = [String: Double]()
     
     func fetchCurrency() {
-        apiRequest(url: "https://api.exchangerate.host/latest") { [weak self] currency in
+        apiRequest(url: requestUrl) { [weak self] currency in
             self?.queryResultCurrency.self = currency.rates
         }
     }

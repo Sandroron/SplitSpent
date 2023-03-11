@@ -6,11 +6,31 @@
 //
 
 import SwiftUI
+import FormValidator
+
+class AddGroupFormInfo: ObservableObject {
+    @Published var groupName: String = ""
+    @Published var selectedCurrency: String = ""
+    
+    lazy var form = {
+        FormValidation(validationType: .deferred)
+    }()
+    
+    lazy var groupNameValidation: ValidationContainer = {
+        $groupName.nonEmptyValidator(form: form, errorMessage: "Enter the name of your group")
+    }()
+    
+    lazy var selectedCurrencyValidation: ValidationContainer = {
+        $selectedCurrency.nonEmptyValidator(form: form, errorMessage: "Choose the currency of your group")
+    }()
+}
 
 struct AddGroupView: View {
     
     @EnvironmentObject var groupListViewModel: GroupListViewModel
-    @State private var name = ""
+    
+    @ObservedObject var formInfo = AddGroupFormInfo()
+    
     @State var selectedUsers = Set<String>()
     @State var selectedCurrency: String?
     @Environment(\.dismiss) private var dismiss
@@ -27,7 +47,9 @@ struct AddGroupView: View {
                         ProgressView()
                     } else {
                         
-                        TextField("Group name", text: $name)
+                        TextField("Group name", text: $formInfo.groupName)
+                            .background(Color(uiColor: .systemBackground))
+                            .validation(formInfo.groupNameValidation)
                         
                         Text("\(selectedUsers.joined(separator: ", "))")
                         
@@ -36,14 +58,21 @@ struct AddGroupView: View {
                             .padding()
                         
                         Text("\(selectedCurrency ?? "")")
+                            .validation(formInfo.selectedCurrencyValidation)
                         
                         let currencySearchViewModel = CurrencySearchViewModel()
                         NavigationLink("Choose currency", destination: CurrencySearchView(currencySearchViewModel: currencySearchViewModel, selectedCurrency: $selectedCurrency))
                             .padding()
                         
                         Button {
-                            groupListViewModel.addGroup(group: Group(name: name, users: Array(selectedUsers) + [FirebaseManager.shared.auth.currentUser?.email ?? ""], currencyBase: selectedCurrency),
-                                                        completion: dismiss.callAsFunction)
+                            
+                            formInfo.selectedCurrency = selectedCurrency ?? ""
+                            
+                            if formInfo.form.triggerValidation() {
+                                
+                                groupListViewModel.addGroup(group: Group(name: formInfo.groupName, users: Array(selectedUsers) + [FirebaseManager.shared.auth.currentUser?.email ?? ""], currencyBase: formInfo.selectedCurrency),
+                                                            completion: dismiss.callAsFunction)
+                            }
                         } label: {
                             Text("Save")
                         }
@@ -52,6 +81,7 @@ struct AddGroupView: View {
                 .padding()
             }
             .navigationTitle("New Group")
+            .background(Color(uiColor: .secondarySystemBackground))
         }
     }
 }

@@ -29,6 +29,7 @@
 		EFD4458329BAB969006FD20A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458229BAB969006FD20A /* Currency.swift */; };
 		EFD4458529BB6FFB006FD20A /* CurrencySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458429BB6FFB006FD20A /* CurrencySearchView.swift */; };
 		EFD4458729BB7501006FD20A /* CurrencySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458629BB7501006FD20A /* CurrencySearchViewModel.swift */; };
+		EFD4458A29BCC1F5006FD20A /* FormValidator in Frameworks */ = {isa = PBXBuildFile; productRef = EFD4458929BCC1F5006FD20A /* FormValidator */; };
 		EFFCEE6929AFD74200337DD9 /* SplitSpentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */; };
 		EFFCEE6B29AFD74200337DD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFCEE6A29AFD74200337DD9 /* ContentView.swift */; };
 		EFFCEE6D29AFD74500337DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFCEE6C29AFD74500337DD9 /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFD4458A29BCC1F5006FD20A /* FormValidator in Frameworks */,
 				EFD4457329BA355A006FD20A /* FirebaseFirestoreSwift in Frameworks */,
 				EFD4458129BAB83B006FD20A /* Alamofire in Frameworks */,
 				EFD4456F29BA355A006FD20A /* FirebaseDatabaseSwift in Frameworks */,
@@ -228,6 +230,7 @@
 				EFD4457429BA355A006FD20A /* FirebaseFunctions */,
 				EFD4457629BA355A006FD20A /* FirebaseStorage */,
 				EFD4458029BAB83B006FD20A /* Alamofire */,
+				EFD4458929BCC1F5006FD20A /* FormValidator */,
 			);
 			productName = SplitSpent;
 			productReference = EFFCEE6529AFD74200337DD9 /* SplitSpent.app */;
@@ -304,6 +307,7 @@
 			packageReferences = (
 				EFD4456929BA355A006FD20A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EFD4457F29BAB83A006FD20A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				EFD4458829BCC1F5006FD20A /* XCRemoteSwiftPackageReference "SwiftUIFormValidator" */,
 			);
 			productRefGroup = EFFCEE6629AFD74200337DD9 /* Products */;
 			projectDirPath = "";
@@ -724,6 +728,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		EFD4458829BCC1F5006FD20A /* XCRemoteSwiftPackageReference "SwiftUIFormValidator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ShabanKamell/SwiftUIFormValidator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -766,6 +778,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EFD4457F29BAB83A006FD20A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		EFD4458929BCC1F5006FD20A /* FormValidator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFD4458829BCC1F5006FD20A /* XCRemoteSwiftPackageReference "SwiftUIFormValidator" */;
+			productName = FormValidator;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
