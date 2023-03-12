@@ -10,10 +10,11 @@ import SwiftUI
 struct UserSearchView: View {
     @Environment(\.dismiss) private var dismiss
     
-    @StateObject var usersLookupViewModel = UsersLookupViewModel()
+    @StateObject private var usersLookupViewModel = UsersLookupViewModel()
     
-    @State var keyword = ""
-    @State var editMode = EditMode.active
+    @State private var keyword = ""
+    @State private var editMode = EditMode.active
+    
     @Binding var selectedUsers: Set<String>
     
     var body: some View {
@@ -56,7 +57,7 @@ struct SearchBarView: View {
             .padding(.leading, 12)
         }
         .frame(height: 40)
-        .cornerRadius(13)
+        .cornerRadius(12)
         .padding()
     }
 }

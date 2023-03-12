@@ -30,10 +30,10 @@ struct AddGroupView: View {
     
     @EnvironmentObject var groupListViewModel: GroupListViewModel
     
-    @ObservedObject var formInfo = AddGroupFormInfo()
+    @ObservedObject private var formInfo = AddGroupFormInfo()
     
-    @State var selectedUsers = Set<String>()
-    @State var selectedCurrency: String?
+    @State private var selectedUsers = Set<String>()
+    @State private var selectedCurrency: String?
     
     var body: some View {
         

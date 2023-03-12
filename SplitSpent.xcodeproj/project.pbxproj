@@ -30,6 +30,9 @@
 		EFD4458529BB6FFB006FD20A /* CurrencySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458429BB6FFB006FD20A /* CurrencySearchView.swift */; };
 		EFD4458729BB7501006FD20A /* CurrencySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458629BB7501006FD20A /* CurrencySearchViewModel.swift */; };
 		EFD4458A29BCC1F5006FD20A /* FormValidator in Frameworks */ = {isa = PBXBuildFile; productRef = EFD4458929BCC1F5006FD20A /* FormValidator */; };
+		EFD4458C29BD48DE006FD20A /* GroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458B29BD48DE006FD20A /* GroupListView.swift */; };
+		EFD4458E29BD4979006FD20A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458D29BD4979006FD20A /* SignInView.swift */; };
+		EFD4459029BD4993006FD20A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458F29BD4993006FD20A /* SignUpView.swift */; };
 		EFFCEE6929AFD74200337DD9 /* SplitSpentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */; };
 		EFFCEE6B29AFD74200337DD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFCEE6A29AFD74200337DD9 /* ContentView.swift */; };
 		EFFCEE6D29AFD74500337DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFCEE6C29AFD74500337DD9 /* Assets.xcassets */; };
@@ -71,6 +74,9 @@
 		EFD4458229BAB969006FD20A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		EFD4458429BB6FFB006FD20A /* CurrencySearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchView.swift; sourceTree = "<group>"; };
 		EFD4458629BB7501006FD20A /* CurrencySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchViewModel.swift; sourceTree = "<group>"; };
+		EFD4458B29BD48DE006FD20A /* GroupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListView.swift; sourceTree = "<group>"; };
+		EFD4458D29BD4979006FD20A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		EFD4458F29BD4993006FD20A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		EFFCEE6529AFD74200337DD9 /* SplitSpent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitSpent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSpentApp.swift; sourceTree = "<group>"; };
 		EFFCEE6A29AFD74200337DD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,6 +143,31 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		EFD4459129BD49C2006FD20A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFD4456329B7D9A1006FD20A /* AddGroupView.swift */,
+				EFFCEE6A29AFD74200337DD9 /* ContentView.swift */,
+				EFD4458429BB6FFB006FD20A /* CurrencySearchView.swift */,
+				EFD4458B29BD48DE006FD20A /* GroupListView.swift */,
+				EFD4458D29BD4979006FD20A /* SignInView.swift */,
+				EFD4458F29BD4993006FD20A /* SignUpView.swift */,
+				EFD4457D29BA5AF6006FD20A /* UserSearchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EFD4459229BD49FB006FD20A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EFD4456529BA2A5C006FD20A /* AuthViewModel.swift */,
+				EFD4458629BB7501006FD20A /* CurrencySearchViewModel.swift */,
+				EFB5955529B2C7730043E4D4 /* GroupListViewModel.swift */,
+				EFD4457829BA4379006FD20A /* UsersLookupViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		EFFCEE5C29AFD74200337DD9 = {
 			isa = PBXGroup;
 			children = (
@@ -160,22 +191,16 @@
 		EFFCEE6729AFD74200337DD9 /* SplitSpent */ = {
 			isa = PBXGroup;
 			children = (
-				EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */,
-				EFFCEE6A29AFD74200337DD9 /* ContentView.swift */,
-				EFD4457D29BA5AF6006FD20A /* UserSearchView.swift */,
-				EFD4458429BB6FFB006FD20A /* CurrencySearchView.swift */,
-				EFD4458629BB7501006FD20A /* CurrencySearchViewModel.swift */,
-				EFD4456329B7D9A1006FD20A /* AddGroupView.swift */,
-				EFD4456729BA2B3D006FD20A /* FirebaseManager.swift */,
-				EFD4456529BA2A5C006FD20A /* AuthViewModel.swift */,
-				EFD4457829BA4379006FD20A /* UsersLookupViewModel.swift */,
-				EFB5955529B2C7730043E4D4 /* GroupListViewModel.swift */,
-				EFD4457A29BA4500006FD20A /* Extensions */,
-				EFD4456229B7AC99006FD20A /* Entities */,
-				EFB5955329AFF8630043E4D4 /* GoogleService-Info.plist */,
 				EFFCEE6C29AFD74500337DD9 /* Assets.xcassets */,
+				EFB5955329AFF8630043E4D4 /* GoogleService-Info.plist */,
 				EFFCEE6E29AFD74500337DD9 /* SplitSpent.entitlements */,
+				EFD4456729BA2B3D006FD20A /* FirebaseManager.swift */,
+				EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */,
+				EFD4456229B7AC99006FD20A /* Entities */,
+				EFD4457A29BA4500006FD20A /* Extensions */,
+				EFD4459229BD49FB006FD20A /* ViewModels */,
 				EFFCEE6F29AFD74500337DD9 /* Preview Content */,
+				EFD4459129BD49C2006FD20A /* Views */,
 			);
 			path = SplitSpent;
 			sourceTree = "<group>";
@@ -354,9 +379,11 @@
 			files = (
 				EFFCEE6B29AFD74200337DD9 /* ContentView.swift in Sources */,
 				EFD4458529BB6FFB006FD20A /* CurrencySearchView.swift in Sources */,
+				EFD4458C29BD48DE006FD20A /* GroupListView.swift in Sources */,
 				EFD4457C29BA4510006FD20A /* String.swift in Sources */,
 				EFD4457929BA4379006FD20A /* UsersLookupViewModel.swift in Sources */,
 				EFD4457E29BA5AF6006FD20A /* UserSearchView.swift in Sources */,
+				EFD4458E29BD4979006FD20A /* SignInView.swift in Sources */,
 				EFB5955629B2C7730043E4D4 /* GroupListViewModel.swift in Sources */,
 				EFD4458729BB7501006FD20A /* CurrencySearchViewModel.swift in Sources */,
 				EFB5955C29B2C9220043E4D4 /* Transaction.swift in Sources */,
@@ -366,6 +393,7 @@
 				EFD4456629BA2A5C006FD20A /* AuthViewModel.swift in Sources */,
 				EFD4456429B7D9A1006FD20A /* AddGroupView.swift in Sources */,
 				EFB5955A29B2C8320043E4D4 /* User.swift in Sources */,
+				EFD4459029BD4993006FD20A /* SignUpView.swift in Sources */,
 				EFB5955829B2C7BB0043E4D4 /* Group.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
