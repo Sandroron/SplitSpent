@@ -8,6 +8,12 @@ import FirebaseFirestoreSwift
 
 struct User: Identifiable, Codable, FirebaseEntity {
     
+    enum CodingKeys: String, CodingKey {
+        case email
+        case name
+        case groupIds
+    }
+    
     static var firebaseName = "Users"
     static var firebaseKeywordsForLookup = "keywordsForLookup"
     
@@ -17,11 +23,5 @@ struct User: Identifiable, Codable, FirebaseEntity {
     var groupIds: [Int]?
     var keywordsForLookup: [String] {
         [name.generateStringSequence(), (email ?? "").generateStringSequence(), "\(name) \(email ?? "")".generateStringSequence()].flatMap { $0 }
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case email
-        case name
-        case groupIds
     }
 }

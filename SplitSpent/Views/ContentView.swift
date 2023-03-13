@@ -11,7 +11,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            if authViewModel.signedIn {
+            if authViewModel.isSignedIn {
                 GroupListView()
                     .navigationBarItems(
                         leading: Button( action: {
@@ -26,7 +26,7 @@ struct ContentView: View {
             }
         }
         .onAppear(perform: {
-            authViewModel.signedIn = authViewModel.isSignedIn
+            authViewModel.isSignedIn = authViewModel.signedIn()
         })
     }
 }

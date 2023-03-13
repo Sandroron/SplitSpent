@@ -11,8 +11,6 @@ struct AddTransactionView: View {
     
     @EnvironmentObject var groupViewModel: GroupViewModel
     
-//    @Binding var transaction: Transaction
-    
     @State private var expenses = [Expense]()
     @State private var description = String()
     
@@ -63,11 +61,5 @@ struct AddTransactionView: View {
                 label: {
                     Text("Save")
                 }))
-//        .onAppear( perform: {
-//
-//            for expense in transaction.expenses {
-//                expenses.append(Expense(email: expense.key, value: String(expense.value)))
-//            }
-//        })
     }
 }

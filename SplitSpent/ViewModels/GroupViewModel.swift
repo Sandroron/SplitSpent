@@ -3,7 +3,6 @@
 //  SplitSpent
 //
 
-
 import SwiftUI
 import FirebaseCore
 import FirebaseFirestore

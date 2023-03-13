@@ -27,8 +27,3 @@ extension Group {
         title = ""
     }
 }
-
-protocol FirebaseEntity {
-    
-    static var firebaseName: String { get }
-}

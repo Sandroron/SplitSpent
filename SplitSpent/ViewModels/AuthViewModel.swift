@@ -12,16 +12,16 @@ class AuthViewModel: ObservableObject {
     
     let auth = FirebaseManager.shared.auth
     
-    @Published var signedIn = false
+    @Published var isSignedIn = false
     @Published var isLoading = false
     @Published var errorMessage = ""
     
-    var isSignedIn: Bool { // userIsAuthenticated
-        return auth.currentUser != nil
-    }
-    
     var id: String? {
         auth.currentUser?.uid
+    }
+    
+    func signedIn() -> Bool {
+        auth.currentUser != nil
     }
     
     func signIn(email: String, password: String) {
@@ -37,7 +37,7 @@ class AuthViewModel: ObservableObject {
             }
             
             DispatchQueue.main.async {
-                self?.signedIn = true
+                self?.isSignedIn = true
                 self?.isLoading = false
             }
         }
@@ -56,7 +56,7 @@ class AuthViewModel: ObservableObject {
             }
             
             DispatchQueue.main.async {
-                self?.signedIn = true
+                self?.isSignedIn = true
                 self?.isLoading = false
             }
             
@@ -69,7 +69,7 @@ class AuthViewModel: ObservableObject {
         
         do {
             try auth.signOut()
-            signedIn = false
+            isSignedIn = false
         } catch let error {
             errorMessage = error.localizedDescription
         }

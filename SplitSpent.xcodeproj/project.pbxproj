@@ -13,6 +13,9 @@
 		EFB1C3AF29BE8FC300B76924 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3AE29BE8FC300B76924 /* Expense.swift */; };
 		EFB1C3B129BEB37100B76924 /* EditTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3B029BEB37100B76924 /* EditTransactionView.swift */; };
 		EFB1C3B529BF56D000B76924 /* FilePicker in Frameworks */ = {isa = PBXBuildFile; productRef = EFB1C3B429BF56D000B76924 /* FilePicker */; };
+		EFB1C3B729BFC28F00B76924 /* AppJsonStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3B629BFC28F00B76924 /* AppJsonStructure.swift */; };
+		EFB1C3B929BFC47200B76924 /* CurrencyApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3B829BFC47200B76924 /* CurrencyApiManager.swift */; };
+		EFB1C3BD29BFC51300B76924 /* FirebaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3BC29BFC51300B76924 /* FirebaseEntity.swift */; };
 		EFB5955429AFF8630043E4D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFB5955329AFF8630043E4D4 /* GoogleService-Info.plist */; };
 		EFB5955629B2C7730043E4D4 /* GroupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5955529B2C7730043E4D4 /* GroupListViewModel.swift */; };
 		EFB5955829B2C7BB0043E4D4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5955729B2C7BB0043E4D4 /* Group.swift */; };
@@ -72,6 +75,9 @@
 		EFB1C3AE29BE8FC300B76924 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		EFB1C3B029BEB37100B76924 /* EditTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionView.swift; sourceTree = "<group>"; };
 		EFB1C3B229BF54D300B76924 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EFB1C3B629BFC28F00B76924 /* AppJsonStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppJsonStructure.swift; sourceTree = "<group>"; };
+		EFB1C3B829BFC47200B76924 /* CurrencyApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyApiManager.swift; sourceTree = "<group>"; };
+		EFB1C3BC29BFC51300B76924 /* FirebaseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEntity.swift; sourceTree = "<group>"; };
 		EFB5955329AFF8630043E4D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EFB5955529B2C7730043E4D4 /* GroupListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewModel.swift; sourceTree = "<group>"; };
 		EFB5955729B2C7BB0043E4D4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -137,9 +143,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EFB1C3BA29BFC4AE00B76924 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				EFD4456729BA2B3D006FD20A /* FirebaseManager.swift */,
+				EFB1C3B829BFC47200B76924 /* CurrencyApiManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		EFB1C3BB29BFC50600B76924 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EFB1C3BC29BFC51300B76924 /* FirebaseEntity.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		EFD4456229B7AC99006FD20A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				EFB1C3B629BFC28F00B76924 /* AppJsonStructure.swift */,
 				EFD4458229BAB969006FD20A /* Currency.swift */,
 				EFB1C3AE29BE8FC300B76924 /* Expense.swift */,
 				EFB5955729B2C7BB0043E4D4 /* Group.swift */,
@@ -213,10 +237,11 @@
 				EFFCEE6C29AFD74500337DD9 /* Assets.xcassets */,
 				EFB5955329AFF8630043E4D4 /* GoogleService-Info.plist */,
 				EFFCEE6E29AFD74500337DD9 /* SplitSpent.entitlements */,
-				EFD4456729BA2B3D006FD20A /* FirebaseManager.swift */,
 				EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */,
 				EFD4456229B7AC99006FD20A /* Entities */,
 				EFD4457A29BA4500006FD20A /* Extensions */,
+				EFB1C3BA29BFC4AE00B76924 /* Managers */,
+				EFB1C3BB29BFC50600B76924 /* Protocols */,
 				EFD4459229BD49FB006FD20A /* ViewModels */,
 				EFFCEE6F29AFD74500337DD9 /* Preview Content */,
 				EFD4459129BD49C2006FD20A /* Views */,
@@ -411,14 +436,17 @@
 				EFD4458E29BD4979006FD20A /* SignInView.swift in Sources */,
 				EFB5955629B2C7730043E4D4 /* GroupListViewModel.swift in Sources */,
 				EFD4458729BB7501006FD20A /* CurrencySearchViewModel.swift in Sources */,
+				EFB1C3B729BFC28F00B76924 /* AppJsonStructure.swift in Sources */,
 				EFB5955C29B2C9220043E4D4 /* Transaction.swift in Sources */,
 				EFD4456829BA2B3D006FD20A /* FirebaseManager.swift in Sources */,
 				EFFCEE6929AFD74200337DD9 /* SplitSpentApp.swift in Sources */,
 				EFD4458329BAB969006FD20A /* Currency.swift in Sources */,
 				EFD4456629BA2A5C006FD20A /* AuthViewModel.swift in Sources */,
 				EFD4456429B7D9A1006FD20A /* AddGroupView.swift in Sources */,
+				EFB1C3B929BFC47200B76924 /* CurrencyApiManager.swift in Sources */,
 				EFB5955A29B2C8320043E4D4 /* User.swift in Sources */,
 				EFD4459029BD4993006FD20A /* SignUpView.swift in Sources */,
+				EFB1C3BD29BFC51300B76924 /* FirebaseEntity.swift in Sources */,
 				EFB1C3A929BE378E00B76924 /* GroupView.swift in Sources */,
 				EFB5955829B2C7BB0043E4D4 /* Group.swift in Sources */,
 			);
