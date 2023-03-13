@@ -26,12 +26,22 @@ struct GroupListView: View {
                 })
             }
             .navigationTitle("Groups")
-            .navigationBarItems(
-                trailing: Button( action: {
-                    showAddGroup.toggle()
-            }, label: {
-                Image(systemName: "plus")
-            }))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button( action: {
+                        showAddGroup.toggle()
+                    }, label: {
+                        Image(systemName: "square.and.arrow.down")
+                    })
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button( action: {
+                        showAddGroup.toggle()
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                }
+            }
             .sheet(item: $selectedGroup) { selectedGroup in
                 GroupView(groupViewModel: GroupViewModel(id: selectedGroup.id ?? ""))
                     .environmentObject(groupListViewModel)
