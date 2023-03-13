@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import FilePicker
 
 struct GroupListView: View {
     @StateObject private var groupListViewModel = GroupListViewModel()
@@ -28,11 +29,14 @@ struct GroupListView: View {
             .navigationTitle("Groups")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button( action: {
-                        showAddGroup.toggle()
-                    }, label: {
-                        Image(systemName: "square.and.arrow.down")
-                    })
+                    FilePicker(types: [.json], allowMultiple: false) { urls in
+                        
+                        groupListViewModel.importGroups(url: urls.first)
+                    } label: {
+                        HStack {
+                            Image(systemName: "square.and.arrow.down")
+                        }
+                    }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button( action: {

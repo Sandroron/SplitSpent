@@ -12,6 +12,7 @@
 		EFB1C3AD29BE758700B76924 /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3AC29BE758700B76924 /* AddTransactionView.swift */; };
 		EFB1C3AF29BE8FC300B76924 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3AE29BE8FC300B76924 /* Expense.swift */; };
 		EFB1C3B129BEB37100B76924 /* EditTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3B029BEB37100B76924 /* EditTransactionView.swift */; };
+		EFB1C3B529BF56D000B76924 /* FilePicker in Frameworks */ = {isa = PBXBuildFile; productRef = EFB1C3B429BF56D000B76924 /* FilePicker */; };
 		EFB5955429AFF8630043E4D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFB5955329AFF8630043E4D4 /* GoogleService-Info.plist */; };
 		EFB5955629B2C7730043E4D4 /* GroupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5955529B2C7730043E4D4 /* GroupListViewModel.swift */; };
 		EFB5955829B2C7BB0043E4D4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5955729B2C7BB0043E4D4 /* Group.swift */; };
@@ -106,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFB1C3B529BF56D000B76924 /* FilePicker in Frameworks */,
 				EFD4458A29BCC1F5006FD20A /* FormValidator in Frameworks */,
 				EFD4457329BA355A006FD20A /* FirebaseFirestoreSwift in Frameworks */,
 				EFD4458129BAB83B006FD20A /* Alamofire in Frameworks */,
@@ -273,6 +275,7 @@
 				EFD4457629BA355A006FD20A /* FirebaseStorage */,
 				EFD4458029BAB83B006FD20A /* Alamofire */,
 				EFD4458929BCC1F5006FD20A /* FormValidator */,
+				EFB1C3B429BF56D000B76924 /* FilePicker */,
 			);
 			productName = SplitSpent;
 			productReference = EFFCEE6529AFD74200337DD9 /* SplitSpent.app */;
@@ -350,6 +353,7 @@
 				EFD4456929BA355A006FD20A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EFD4457F29BAB83A006FD20A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				EFD4458829BCC1F5006FD20A /* XCRemoteSwiftPackageReference "SwiftUIFormValidator" */,
+				EFB1C3B329BF56D000B76924 /* XCRemoteSwiftPackageReference "FilePicker" */,
 			);
 			productRefGroup = EFFCEE6629AFD74200337DD9 /* Products */;
 			projectDirPath = "";
@@ -770,6 +774,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EFB1C3B329BF56D000B76924 /* XCRemoteSwiftPackageReference "FilePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markrenaud/FilePicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		EFD4456929BA355A006FD20A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -797,6 +809,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EFB1C3B429BF56D000B76924 /* FilePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFB1C3B329BF56D000B76924 /* XCRemoteSwiftPackageReference "FilePicker" */;
+			productName = FilePicker;
+		};
 		EFD4456A29BA355A006FD20A /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EFD4456929BA355A006FD20A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

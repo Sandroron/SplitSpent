@@ -43,18 +43,72 @@ class GroupListViewModel: ObservableObject { // DataManager
             }
             self?.isLoading = false
         })
+    }
+    
+    func importGroups(url: URL?) {
+
+        isLoading = true
         
-//        docRef.getDocument(as: [Group].self) { [weak self] result in
-//          switch result {
-//          case .success(let groups):
-//
-//            self?.groups = groups
-//            self?.errorMessage = nil
-//          case .failure(let error):
-//
-//            self?.errorMessage = "Error decoding document: \(error.localizedDescription)"
-//          }
-//        }
+        do {
+            if let url {
+                let jsonData = try Data(contentsOf: url)
+                let decodedData = try JSONDecoder().decode(AppJsonStructure.self, from: jsonData)
+                
+                addGroupsFromJson(jsonGroups: decodedData.groups, completion: { [weak self] in
+                    self?.addUsersFromJson(jsonUsers: decodedData.users, completion: { [weak self] in
+                        self?.fetchGroups()
+                    })
+                })
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func addGroupsFromJson(jsonGroups: [AppJsonStructure.GroupJsonStructure], completion: @escaping () -> Void) {
+        
+        for jsonGroup in jsonGroups {
+            
+            do {
+                try FirebaseManager.shared.firestore.collection(Group.firebaseName).document().setData(from: jsonGroup.getGroup(), completion: { [weak self] error in
+                    
+                    if let error = error {
+                        self?.errorMessage = "Error decoding document: \(error.localizedDescription)"
+                    }
+                    
+                    if jsonGroup.id == jsonGroups.last?.id {
+                        
+                        completion()
+                    }
+                })
+            } catch {
+                self.errorMessage = "Error decoding document: \(error.localizedDescription)"
+                completion()
+            }
+        }
+    }
+    
+    private func addUsersFromJson(jsonUsers: [AppJsonStructure.UserJsonStructure], completion: @escaping () -> Void) {
+        
+        for jsonUser in jsonUsers {
+            
+            do {
+                try FirebaseManager.shared.firestore.collection(User.firebaseName).document().setData(from: jsonUser.getUser(), completion: { [weak self] error in
+                    
+                    if let error = error {
+                        self?.errorMessage = "Error decoding document: \(error.localizedDescription)"
+                    }
+                    
+                    if jsonUser.email == jsonUsers.last?.email {
+                        
+                        completion()
+                    }
+                })
+            } catch {
+                self.errorMessage = "Error decoding document: \(error.localizedDescription)"
+                completion()
+            }
+        }
     }
     
     func addGroup(group: Group, completion: @escaping () -> Void) {
@@ -81,3 +135,47 @@ class GroupListViewModel: ObservableObject { // DataManager
         }
     }
 }
+
+struct AppJsonStructure: Codable {
+    var users: [UserJsonStructure]
+    var groups: [GroupJsonStructure]
+    
+    struct UserJsonStructure: Codable {
+        var email: String?
+        var name: String
+        
+        func getUser() -> User {
+            User(email: email, name: name)
+        }
+    }
+    
+    struct GroupJsonStructure: Codable {
+        var id: String
+        var title: String?
+        var users: [String]?
+        var transactions: [TransactionJsonStructure]?
+        
+        struct TransactionJsonStructure: Codable {
+            var id: String
+            var expenses: [String : Double]?
+        }
+        
+        func getGroup() -> Group {
+            Group(id: id, title: title ?? "", users: users, transactions: getTransactions())
+        }
+        
+        private func getTransactions() -> [Transaction] {
+            var transactionsResult: [Transaction] = []
+            
+            guard let transactions else { return [] }
+            
+            for transaction in transactions {
+                
+                transactionsResult.append(Transaction(id: transaction.id, expenses: transaction.expenses ?? [:]))
+            }
+            
+            return transactionsResult
+        }
+    }
+}
+
