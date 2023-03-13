@@ -2,8 +2,6 @@
 //  GroupListView.swift
 //  SplitSpent
 //
-//  Created by CT Razumnyi on 12.03.2023.
-//
 
 import SwiftUI
 

@@ -2,8 +2,6 @@
 //  SplitSpentUITestsLaunchTests.swift
 //  SplitSpentUITests
 //
-//  Created by CT Razumnyi on 01.03.2023.
-//
 
 import XCTest
 

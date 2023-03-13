@@ -2,8 +2,6 @@
 //  AddGroupView.swift
 //  SplitSpent
 //
-//  Created by CT Razumnyi on 07.03.2023.
-//
 
 import SwiftUI
 import FormValidator

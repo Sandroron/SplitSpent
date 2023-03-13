@@ -2,8 +2,6 @@
 //  SplitSpentApp.swift
 //  SplitSpent
 //
-//  Created by CT Razumnyi on 01.03.2023.
-//
 
 import SwiftUI
 import FirebaseCore

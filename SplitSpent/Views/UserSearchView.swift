@@ -2,8 +2,6 @@
 //  UserSearchView.swift
 //  SplitSpent
 //
-//  Created by CT Razumnyi on 09.03.2023.
-//
 
 import SwiftUI
 
