@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EFB1C3A929BE378E00B76924 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3A829BE378E00B76924 /* GroupView.swift */; };
+		EFB1C3AB29BE383000B76924 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3AA29BE383000B76924 /* GroupViewModel.swift */; };
+		EFB1C3AD29BE758700B76924 /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3AC29BE758700B76924 /* AddTransactionView.swift */; };
+		EFB1C3AF29BE8FC300B76924 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3AE29BE8FC300B76924 /* Expense.swift */; };
+		EFB1C3B129BEB37100B76924 /* EditTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB1C3B029BEB37100B76924 /* EditTransactionView.swift */; };
 		EFB5955429AFF8630043E4D4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFB5955329AFF8630043E4D4 /* GoogleService-Info.plist */; };
 		EFB5955629B2C7730043E4D4 /* GroupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5955529B2C7730043E4D4 /* GroupListViewModel.swift */; };
 		EFB5955829B2C7BB0043E4D4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB5955729B2C7BB0043E4D4 /* Group.swift */; };
@@ -60,6 +65,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EFB1C3A829BE378E00B76924 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		EFB1C3AA29BE383000B76924 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		EFB1C3AC29BE758700B76924 /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
+		EFB1C3AE29BE8FC300B76924 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		EFB1C3B029BEB37100B76924 /* EditTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionView.swift; sourceTree = "<group>"; };
 		EFB5955329AFF8630043E4D4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EFB5955529B2C7730043E4D4 /* GroupListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewModel.swift; sourceTree = "<group>"; };
 		EFB5955729B2C7BB0043E4D4 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -127,10 +137,11 @@
 		EFD4456229B7AC99006FD20A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				EFB5955729B2C7BB0043E4D4 /* Group.swift */,
 				EFD4458229BAB969006FD20A /* Currency.swift */,
-				EFB5955929B2C8320043E4D4 /* User.swift */,
+				EFB1C3AE29BE8FC300B76924 /* Expense.swift */,
+				EFB5955729B2C7BB0043E4D4 /* Group.swift */,
 				EFB5955B29B2C9220043E4D4 /* Transaction.swift */,
+				EFB5955929B2C8320043E4D4 /* User.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -147,9 +158,12 @@
 			isa = PBXGroup;
 			children = (
 				EFD4456329B7D9A1006FD20A /* AddGroupView.swift */,
+				EFB1C3AC29BE758700B76924 /* AddTransactionView.swift */,
+				EFB1C3B029BEB37100B76924 /* EditTransactionView.swift */,
 				EFFCEE6A29AFD74200337DD9 /* ContentView.swift */,
 				EFD4458429BB6FFB006FD20A /* CurrencySearchView.swift */,
 				EFD4458B29BD48DE006FD20A /* GroupListView.swift */,
+				EFB1C3A829BE378E00B76924 /* GroupView.swift */,
 				EFD4458D29BD4979006FD20A /* SignInView.swift */,
 				EFD4458F29BD4993006FD20A /* SignUpView.swift */,
 				EFD4457D29BA5AF6006FD20A /* UserSearchView.swift */,
@@ -163,6 +177,7 @@
 				EFD4456529BA2A5C006FD20A /* AuthViewModel.swift */,
 				EFD4458629BB7501006FD20A /* CurrencySearchViewModel.swift */,
 				EFB5955529B2C7730043E4D4 /* GroupListViewModel.swift */,
+				EFB1C3AA29BE383000B76924 /* GroupViewModel.swift */,
 				EFD4457829BA4379006FD20A /* UsersLookupViewModel.swift */,
 			);
 			path = ViewModels;
@@ -377,10 +392,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFB1C3AF29BE8FC300B76924 /* Expense.swift in Sources */,
 				EFFCEE6B29AFD74200337DD9 /* ContentView.swift in Sources */,
 				EFD4458529BB6FFB006FD20A /* CurrencySearchView.swift in Sources */,
+				EFB1C3B129BEB37100B76924 /* EditTransactionView.swift in Sources */,
 				EFD4458C29BD48DE006FD20A /* GroupListView.swift in Sources */,
 				EFD4457C29BA4510006FD20A /* String.swift in Sources */,
+				EFB1C3AB29BE383000B76924 /* GroupViewModel.swift in Sources */,
+				EFB1C3AD29BE758700B76924 /* AddTransactionView.swift in Sources */,
 				EFD4457929BA4379006FD20A /* UsersLookupViewModel.swift in Sources */,
 				EFD4457E29BA5AF6006FD20A /* UserSearchView.swift in Sources */,
 				EFD4458E29BD4979006FD20A /* SignInView.swift in Sources */,
@@ -394,6 +413,7 @@
 				EFD4456429B7D9A1006FD20A /* AddGroupView.swift in Sources */,
 				EFB5955A29B2C8320043E4D4 /* User.swift in Sources */,
 				EFD4459029BD4993006FD20A /* SignUpView.swift in Sources */,
+				EFB1C3A929BE378E00B76924 /* GroupView.swift in Sources */,
 				EFB5955829B2C7BB0043E4D4 /* Group.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,6 +571,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SplitSpent/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SplitSpent;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -569,7 +591,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.devchallengetask.SplitSpent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -587,6 +611,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SplitSpent/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SplitSpent;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -605,7 +631,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.devchallengetask.SplitSpent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

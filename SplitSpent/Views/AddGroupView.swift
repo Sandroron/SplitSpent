@@ -86,7 +86,7 @@ struct AddGroupView: View {
                         
                         if formInfo.form.triggerValidation() {
                             
-                            groupListViewModel.addGroup(group: Group(name: formInfo.groupName,
+                            groupListViewModel.addGroup(group: Group(title: formInfo.groupName,
                                                                      users: Array(selectedUsers) + [FirebaseManager.shared.auth.currentUser?.email ?? ""],
                                                                      currencyBase: formInfo.selectedCurrency),
                                                         completion: dismiss.callAsFunction)

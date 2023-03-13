@@ -17,10 +17,17 @@ struct Group: Identifiable, Codable, FirebaseEntity {
     }
     
     @DocumentID var id: String?
-    var name: String
+    var title: String
     var users: [String]?
     var transactions: [Transaction]?
     var currencyBase: String?
+}
+
+extension Group {
+    
+    init() {
+        title = ""
+    }
 }
 
 protocol FirebaseEntity {

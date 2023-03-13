@@ -27,7 +27,7 @@ class SignUpFormInfo: ObservableObject {
     }()
     
     lazy var passwordSizeValidation: ValidationContainer = {
-        $password.inlineValidator(form: form, errorMessage: "Password must not be more than 6 characters") { value in
+        $password.inlineValidator(form: form, errorMessage: "Password must be more than 6 characters") { value in
             value.count >= 6
         }
     }()

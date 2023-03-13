@@ -9,7 +9,9 @@ import SwiftUI
 
 struct GroupListView: View {
     @StateObject private var groupListViewModel = GroupListViewModel()
-    @State private var showPopup = false
+    
+    @State private var selectedGroup: Group?
+    @State private var showAddGroup = false
     
     var body: some View {
         
@@ -18,20 +20,28 @@ struct GroupListView: View {
             ProgressView()
         } else {
             List(groupListViewModel.groups, id: \.id) { group in
-                Text(group.name)
+                
+                Button(action: {
+                    selectedGroup = group
+                }, label: {
+                    Text(group.title)
+                })
             }
             .navigationTitle("Groups")
             .navigationBarItems(
                 trailing: Button( action: {
-                    showPopup.toggle()
+                    showAddGroup.toggle()
             }, label: {
                 Image(systemName: "plus")
             }))
-            .sheet(isPresented: $showPopup) {
+            .sheet(item: $selectedGroup) { selectedGroup in
+                GroupView(groupViewModel: GroupViewModel(id: selectedGroup.id ?? ""))
+                    .environmentObject(groupListViewModel)
+            }
+            .sheet(isPresented: $showAddGroup) {
                 AddGroupView()
                     .environmentObject(groupListViewModel)
             }
-            
         }
     }
 }
