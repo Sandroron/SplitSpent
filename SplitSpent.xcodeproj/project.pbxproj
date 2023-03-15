@@ -42,6 +42,7 @@
 		EFD4458C29BD48DE006FD20A /* GroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458B29BD48DE006FD20A /* GroupListView.swift */; };
 		EFD4458E29BD4979006FD20A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458D29BD4979006FD20A /* SignInView.swift */; };
 		EFD4459029BD4993006FD20A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458F29BD4993006FD20A /* SignUpView.swift */; };
+		EFD9C4FF29C2177C00CBC310 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9C4FE29C2177C00CBC310 /* Binding.swift */; };
 		EFFCEE6929AFD74200337DD9 /* SplitSpentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */; };
 		EFFCEE6B29AFD74200337DD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFCEE6A29AFD74200337DD9 /* ContentView.swift */; };
 		EFFCEE6D29AFD74500337DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFCEE6C29AFD74500337DD9 /* Assets.xcassets */; };
@@ -95,6 +96,7 @@
 		EFD4458B29BD48DE006FD20A /* GroupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListView.swift; sourceTree = "<group>"; };
 		EFD4458D29BD4979006FD20A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		EFD4458F29BD4993006FD20A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		EFD9C4FE29C2177C00CBC310 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		EFFCEE6529AFD74200337DD9 /* SplitSpent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitSpent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSpentApp.swift; sourceTree = "<group>"; };
 		EFFCEE6A29AFD74200337DD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				EFD4457B29BA4510006FD20A /* String.swift */,
+				EFD9C4FE29C2177C00CBC310 /* Binding.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				EFFCEE6B29AFD74200337DD9 /* ContentView.swift in Sources */,
 				EFD4458529BB6FFB006FD20A /* CurrencySearchView.swift in Sources */,
 				EFB1C3B129BEB37100B76924 /* EditTransactionView.swift in Sources */,
+				EFD9C4FF29C2177C00CBC310 /* Binding.swift in Sources */,
 				EFD4458C29BD48DE006FD20A /* GroupListView.swift in Sources */,
 				EFD4457C29BA4510006FD20A /* String.swift in Sources */,
 				EFB1C3AB29BE383000B76924 /* GroupViewModel.swift in Sources */,
@@ -607,6 +611,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SplitSpent/Info.plist;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "SpiltSpent reqires access to your photo camera";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "SpiltSpent reqires access to your photo library";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -647,6 +653,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SplitSpent/Info.plist;
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "SpiltSpent reqires access to your photo camera";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "SpiltSpent reqires access to your photo library";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

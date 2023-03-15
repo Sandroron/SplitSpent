@@ -6,12 +6,14 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import FirebaseStorage
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class FirebaseManager: NSObject {
     
     let auth: Auth
+    let storage: Storage
     let firestore: Firestore
     
     static let shared = FirebaseManager()
@@ -23,6 +25,7 @@ class FirebaseManager: NSObject {
         }
         
         auth = Auth.auth()
+        storage = Storage.storage()
         firestore = Firestore.firestore()
         
         super.init()

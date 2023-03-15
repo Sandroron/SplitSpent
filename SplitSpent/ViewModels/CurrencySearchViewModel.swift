@@ -12,7 +12,7 @@ class CurrencySearchViewModel: ObservableObject {
     @Published var queryResultCurrency = [String: Double]()
     
     func fetchCurrency() {
-        CurrencyApi.apiRequest(url: requestUrl) { [weak self] currency in
+        CurrencyApiManager.apiRequest(url: requestUrl) { [weak self] currency in
             self?.queryResultCurrency.self = currency.rates
         }
     }

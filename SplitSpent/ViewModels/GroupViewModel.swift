@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 import FirebaseCore
 import FirebaseFirestore
 
@@ -50,21 +51,86 @@ class GroupViewModel: ObservableObject {
     func saveGroup(completion: @escaping () -> Void) {
         isLoading = true
         
-        let groupToSave = Group(title: group.title, users: Array(users), transactions: Array(transactions), currencyBase: group.currencyBase)
+        savePhotos(completion: { [unowned self] in
+            
+            let groupToSave = Group(title: group.title,
+                                    users: Array(users),
+                                    transactions: Array(transactions),
+                                    currencyBase: group.currencyBase)
+                    
+            do {
+                errorMessage = ""
+                    
+                let document = FirebaseManager.shared.firestore.collection(Group.firebaseName).document(groupId)
+                try document.setData(from: groupToSave, completion: { [unowned self] error in
+                    
+                    isLoading = false
+                    errorMessage = "Error saving document: \(error?.localizedDescription ?? "")"
+                    completion()
+                })
+            } catch {
+                isLoading = false
+                errorMessage = error.localizedDescription
+            }
+        })
+    }
+    
+    func savePhotos(completion: @escaping () -> Void) {
+        
+        guard let userId = FirebaseManager.shared.auth.currentUser?.email,
+              !transactions.isEmpty else {
+            return
+        }
+        
+        let transactionsArray = transactions.sorted(by: <)
+        
+        for transaction in transactionsArray {
+            
+            if let photosImages = transaction.photosDataInfo?.selectedPhotosImages,
+               !photosImages.isEmpty {
                 
-        do {
-            errorMessage = ""
+                var editedTransaction = transaction
+                editedTransaction.photos = []
                 
-            let document = FirebaseManager.shared.firestore.collection(Group.firebaseName).document(groupId)
-            try document.setData(from: groupToSave, completion: { [weak self] error in
+                photosImages.forEach { photoImage in
+                    
+                    let uid = userId + UUID().uuidString
+                    let ref = FirebaseManager.shared.storage.reference(withPath: uid)
+                    
+                    guard let imageData = photoImage.jpegData(compressionQuality: 0.5) else {
+                        return
+                    }
+                    
+                    ref.putData(imageData) { metadata, error in
+                        
+                        ref.downloadURL(completion: { [unowned self] url, error in
+                            
+                            guard let url, error == nil else {
+                                return
+                            }
+                            
+                            editedTransaction.photos?.append(url.absoluteString)
+                            
+                            if photoImage == photosImages.last {
+                                
+                                transactions.remove(transaction)
+                                transactions.update(with: editedTransaction)
+                                
+                                if transaction == transactionsArray.last {
+                                    completion()
+                                }
+                            }
+                        })
+                    }
+                }
+            } else {
                 
-                self?.isLoading = false
-                self?.errorMessage = "Error saving document: \(error?.localizedDescription ?? "")"
-                completion()
-            })
-        } catch {
-            isLoading = false
-            errorMessage = error.localizedDescription
+                if transaction == transactionsArray.last {
+                    completion()
+                } else {
+                    continue
+                }
+            }
         }
     }
     
@@ -75,7 +141,7 @@ class GroupViewModel: ObservableObject {
         users = Set(temp)
     }
     
-    func addTransaction(description: String, expenses: [Expense]) {
+    func addTransaction(description: String, expenses: [Expense], selectedItems: [PhotosPickerItem], selectedPhotosData: [Data], selectedPhotosImages: [UIImage]?) {
 
         var expensesDictionary = [String : Double]()
         
@@ -83,10 +149,14 @@ class GroupViewModel: ObservableObject {
             expensesDictionary.updateValue(Double(expense.value) ?? 0.0, forKey: expense.email)
         }
         
-        transactions.update(with: Transaction(description: description, expenses: expensesDictionary))
+        let photosDataInfo = Transaction.PhotosDataInfo(selectedItems: selectedItems,
+                                                        selectedPhotosData: selectedPhotosData,
+                                                        selectedPhotosImages: selectedPhotosImages)
+        
+        transactions.update(with: Transaction(description: description, photosDataInfo: photosDataInfo, expenses: expensesDictionary))
     }
     
-    func editTransaction(transaction: Transaction, description: String, expenses: [Expense]) {
+    func editTransaction(transaction: Transaction, description: String, expenses: [Expense], selectedItems: [PhotosPickerItem]?, selectedPhotosData: [Data]?, selectedPhotosImages: [UIImage]?) {
 
         var editedTransaction = transaction
         var expensesDictionary = [String : Double]()
@@ -95,8 +165,13 @@ class GroupViewModel: ObservableObject {
             expensesDictionary.updateValue(Double(expense.value) ?? 0.0, forKey: expense.email)
         }
         
+        let photosDataInfo = Transaction.PhotosDataInfo(selectedItems: selectedItems ?? [],
+                                                        selectedPhotosData: selectedPhotosData ?? [],
+                                                        selectedPhotosImages: selectedPhotosImages)
+        
         editedTransaction.description = description
         editedTransaction.expenses = expensesDictionary
+        editedTransaction.photosDataInfo = photosDataInfo
         
         transactions.remove(transaction)
         transactions.update(with: editedTransaction)
@@ -107,5 +182,10 @@ class GroupViewModel: ObservableObject {
         var temp = transactions.sorted(by: >)
         temp.remove(atOffsets: offsets)
         transactions = Set(temp)
+    }
+    
+    static func delay(_ delay: Double, closure: @escaping ()->()) {
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
 }
