@@ -141,6 +141,13 @@ class GroupViewModel: ObservableObject {
         users = Set(temp)
     }
     
+    func deleteExpense(at offsets: IndexSet) {
+        
+        var temp = users.sorted(by: >)
+        temp.remove(atOffsets: offsets)
+        users = Set(temp)
+    }
+    
     func addTransaction(description: String, expenses: [Expense], selectedItems: [PhotosPickerItem], selectedPhotosData: [Data], selectedPhotosImages: [UIImage]?) {
 
         var expensesDictionary = [String : Double]()
@@ -193,6 +200,7 @@ class GroupViewModel: ObservableObject {
             userExpenses.update(with: UserExpense(email: email))
         }
         
+        // Gathering of all transactions and calculation of who is owes (paid) or owed
         for transaction in transactions {
             
             let payer = transaction.expenses.first(where: { $0.value > 0 })?.key ?? ""
@@ -206,7 +214,11 @@ class GroupViewModel: ObservableObject {
                     if expense.value <= 0 {
                         updatedUserExpense.owes = updatedUserExpense.owes + expense.value
                         updatedUserExpense.part = updatedUserExpense.part + abs(expense.value)
-                        updatedUserExpense.owesTo = payer
+                        
+                        var owesTo = updatedUserExpense.owesTo
+                        owesTo[payer] = (owesTo[payer] ?? 0.0) + abs(expense.value)
+                        
+                        updatedUserExpense.owesTo = owesTo
                     } else {
                         updatedUserExpense.paid = updatedUserExpense.paid + expense.value
                         
@@ -227,14 +239,38 @@ class GroupViewModel: ObservableObject {
             }
         }
         
+        // Clear mutual debts
+        var userExpensesArray = Array(userExpenses)
+        
+        for (currentUserIndex, currentUser) in userExpensesArray.enumerated() {
+            
+            for (otherUserIndex, otherUser) in userExpensesArray.enumerated() {
+                
+                if var otherUserOwesToCurrentUser = otherUser.owesTo[currentUser.email],
+                   var currentUserOwesToOtherUser = currentUser.owesTo[otherUser.email],
+                   otherUserOwesToCurrentUser > 0, currentUserOwesToOtherUser > 0 {
+                    
+                    let difference = min(otherUserOwesToCurrentUser, currentUserOwesToOtherUser)
+                    
+                    otherUserOwesToCurrentUser = otherUserOwesToCurrentUser - difference
+                    currentUserOwesToOtherUser = currentUserOwesToOtherUser - difference
+                    
+                    // Remove the debt if the user has settled
+                    userExpensesArray[currentUserIndex].owesTo[otherUser.email] = currentUserOwesToOtherUser > 0 ? currentUserOwesToOtherUser : nil
+                    userExpensesArray[otherUserIndex].owesTo[currentUser.email] = otherUserOwesToCurrentUser > 0 ? otherUserOwesToCurrentUser : nil
+                }
+            }
+        }
+        
         isLoading = false
         
-        return Array(userExpenses)
+        return userExpensesArray
     }
 }
 
 
 struct UserExpense: Identifiable, Hashable {
+    
     var id: String {
         email
     }
@@ -242,7 +278,7 @@ struct UserExpense: Identifiable, Hashable {
     var paid: Double
     var part: Double
     var owes: Double
-    var owesTo: String
+    var owesTo: [String : Double]
 }
 
 extension UserExpense {
@@ -251,6 +287,6 @@ extension UserExpense {
         paid = 0.0
         part = 0.0
         owes = 0.0
-        owesTo = ""
+        owesTo = [:]
     }
 }

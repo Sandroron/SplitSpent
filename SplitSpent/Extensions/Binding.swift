@@ -2,8 +2,6 @@
 //  Binding.swift
 //  SplitSpent
 //
-//  Created by CT Razumnyi on 15.03.2023.
-//
 
 import Foundation
 import SwiftUI

@@ -54,6 +54,9 @@ struct GroupListView: View {
                 AddGroupView()
                     .environmentObject(groupListViewModel)
             }
+            .refreshable {
+                groupListViewModel.fetchGroups()
+            }
         }
     }
 }

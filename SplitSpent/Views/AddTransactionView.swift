@@ -51,6 +51,7 @@ struct AddTransactionView: View {
                         .background(Color(uiColor: .systemBackground))
                 }
             }
+            .onDelete(perform: removeExpense)
 
             Section("Expenses (put \"-\" for debtors)") {
 
@@ -81,6 +82,10 @@ struct AddTransactionView: View {
                 label: {
                     Text("Save")
                 }))
+    }
+    
+    func removeExpense(at offsets: IndexSet) {
+        expenses.remove(atOffsets: offsets)
     }
 }
 
