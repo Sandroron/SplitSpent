@@ -69,7 +69,7 @@ struct ReportScreenView: View {
         .navigationTitle("Report")
         .background(Color(uiColor: .secondarySystemBackground))
         .onAppear(perform: {
-            userExpenses = groupViewModel.calculateUserOwes()
+            userExpenses = UserOwesCalculator.calculate(for: groupViewModel.users, with: groupViewModel.transactions)
         })
     }
 }

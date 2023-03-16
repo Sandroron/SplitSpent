@@ -4,30 +4,33 @@
 //
 
 import XCTest
+import SplitSpent
 
 final class SplitSpentTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func testExampleFromDevChallenge() throws {
+        // User A paid in a cafe for 30$ for himself and B and C users. Users B part is 5$, user’s C part is 15$. User A opens the application, and adds their expense (30$), with information about each user’s parts.
+        
+        let users: Set<String> = ["A", "B", "C"]
+        
+        let transactions: Set<Transaction> = [Transaction(id: "qwerty",
+                                                          expenses: ["A": 30.0,
+                                                                     "B": -5.0,
+                                                                     "C": -15.0])]
+        
+        let userExpenses = UserOwesCalculator.calculate(for: users, with: transactions)
+        
+        for userExpense in userExpenses {
+            
+            if userExpense.email == "B" {
+                
+                XCTAssertEqual( userExpense.owesTo["A"], 5)
+            }
+            
+            if userExpense.email == "C" {
+                
+                XCTAssertEqual( userExpense.owesTo["A"], 15)
+            }
         }
     }
-
 }
