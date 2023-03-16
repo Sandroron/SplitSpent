@@ -43,6 +43,7 @@
 		EFD4458E29BD4979006FD20A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458D29BD4979006FD20A /* SignInView.swift */; };
 		EFD4459029BD4993006FD20A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4458F29BD4993006FD20A /* SignUpView.swift */; };
 		EFD9C4FF29C2177C00CBC310 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9C4FE29C2177C00CBC310 /* Binding.swift */; };
+		EFD9C50129C28AE700CBC310 /* ReportScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9C50029C28AE700CBC310 /* ReportScreenView.swift */; };
 		EFFCEE6929AFD74200337DD9 /* SplitSpentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */; };
 		EFFCEE6B29AFD74200337DD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFCEE6A29AFD74200337DD9 /* ContentView.swift */; };
 		EFFCEE6D29AFD74500337DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFCEE6C29AFD74500337DD9 /* Assets.xcassets */; };
@@ -97,6 +98,7 @@
 		EFD4458D29BD4979006FD20A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		EFD4458F29BD4993006FD20A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		EFD9C4FE29C2177C00CBC310 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		EFD9C50029C28AE700CBC310 /* ReportScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportScreenView.swift; sourceTree = "<group>"; };
 		EFFCEE6529AFD74200337DD9 /* SplitSpent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitSpent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFCEE6829AFD74200337DD9 /* SplitSpentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSpentApp.swift; sourceTree = "<group>"; };
 		EFFCEE6A29AFD74200337DD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -189,11 +191,12 @@
 			children = (
 				EFD4456329B7D9A1006FD20A /* AddGroupView.swift */,
 				EFB1C3AC29BE758700B76924 /* AddTransactionView.swift */,
-				EFB1C3B029BEB37100B76924 /* EditTransactionView.swift */,
 				EFFCEE6A29AFD74200337DD9 /* ContentView.swift */,
 				EFD4458429BB6FFB006FD20A /* CurrencySearchView.swift */,
+				EFB1C3B029BEB37100B76924 /* EditTransactionView.swift */,
 				EFD4458B29BD48DE006FD20A /* GroupListView.swift */,
 				EFB1C3A829BE378E00B76924 /* GroupView.swift */,
+				EFD9C50029C28AE700CBC310 /* ReportScreenView.swift */,
 				EFD4458D29BD4979006FD20A /* SignInView.swift */,
 				EFD4458F29BD4993006FD20A /* SignUpView.swift */,
 				EFD4457D29BA5AF6006FD20A /* UserSearchView.swift */,
@@ -442,6 +445,7 @@
 				EFD4458729BB7501006FD20A /* CurrencySearchViewModel.swift in Sources */,
 				EFB1C3B729BFC28F00B76924 /* AppJsonStructure.swift in Sources */,
 				EFB5955C29B2C9220043E4D4 /* Transaction.swift in Sources */,
+				EFD9C50129C28AE700CBC310 /* ReportScreenView.swift in Sources */,
 				EFD4456829BA2B3D006FD20A /* FirebaseManager.swift in Sources */,
 				EFFCEE6929AFD74200337DD9 /* SplitSpentApp.swift in Sources */,
 				EFD4458329BAB969006FD20A /* Currency.swift in Sources */,

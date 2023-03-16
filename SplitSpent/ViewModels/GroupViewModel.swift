@@ -75,7 +75,7 @@ class GroupViewModel: ObservableObject {
         })
     }
     
-    func savePhotos(completion: @escaping () -> Void) {
+    private func savePhotos(completion: @escaping () -> Void) {
         
         guard let userId = FirebaseManager.shared.auth.currentUser?.email,
               !transactions.isEmpty else {
@@ -184,8 +184,73 @@ class GroupViewModel: ObservableObject {
         transactions = Set(temp)
     }
     
-    static func delay(_ delay: Double, closure: @escaping ()->()) {
-        DispatchQueue.main.asyncAfter(
-            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
+    func calculateUserOwes() -> [UserExpense] {
+        isLoading = true
+        
+        var userExpenses = Set<UserExpense>()
+        
+        for email in users {
+            userExpenses.update(with: UserExpense(email: email))
+        }
+        
+        for transaction in transactions {
+            
+            let payer = transaction.expenses.first(where: { $0.value > 0 })?.key ?? ""
+            
+            for expense in transaction.expenses {
+                
+                if let userExpense = userExpenses.first(where: {$0.email == expense.key}) {
+                    
+                    var updatedUserExpense = userExpense
+                    
+                    if expense.value <= 0 {
+                        updatedUserExpense.owes = updatedUserExpense.owes + expense.value
+                        updatedUserExpense.part = updatedUserExpense.part + abs(expense.value)
+                        updatedUserExpense.owesTo = payer
+                    } else {
+                        updatedUserExpense.paid = updatedUserExpense.paid + expense.value
+                        
+                        let otherUsersParts = transaction.expenses.reduce(0, { result, keyValuePair in
+                            
+                            if userExpense.email == keyValuePair.key {
+                                return result
+                            }
+                            return result + abs(keyValuePair.value)
+                        })
+                        
+                        updatedUserExpense.part = updatedUserExpense.part + updatedUserExpense.paid - otherUsersParts
+                    }
+                    
+                    userExpenses.remove(userExpense)
+                    userExpenses.update(with: updatedUserExpense)
+                }
+            }
+        }
+        
+        isLoading = false
+        
+        return Array(userExpenses)
+    }
+}
+
+
+struct UserExpense: Identifiable, Hashable {
+    var id: String {
+        email
+    }
+    var email: String
+    var paid: Double
+    var part: Double
+    var owes: Double
+    var owesTo: String
+}
+
+extension UserExpense {
+    init(email: String) {
+        self.email = email
+        paid = 0.0
+        part = 0.0
+        owes = 0.0
+        owesTo = ""
     }
 }

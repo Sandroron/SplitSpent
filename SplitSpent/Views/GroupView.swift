@@ -73,6 +73,16 @@ struct GroupView: View {
                             }
                         }
                     }
+                    
+                    Section("Report") {
+                        
+                        NavigationLink(destination: ReportScreenView().environmentObject(groupViewModel)) {
+                            HStack {
+                                Text("Show report")
+                                    .foregroundColor(Color(uiColor: .link))
+                            }
+                        }
+                    }
                 }
                 .navigationTitle("Group")
                 .background(Color(uiColor: .secondarySystemBackground))
